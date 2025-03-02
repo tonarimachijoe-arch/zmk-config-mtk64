@@ -71,7 +71,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp PMW3610_CPI_DEC_300 &kp PMW3610_CPI_DEC_100 &kp PMW3610_CPI_INC_100 &kp PMW3610_CPI_DEC_300
+&trans  &kp PMW3610_CPI_DEC_1K &kp PMW3610_CPI_DEC_200 &kp PMW3610_CPI_INC_200 &kp PMW3610_CPI_DEC_1K
                                         &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans                          &trans  &trans      &trans  &trans                          &trans  &trans
                 &trans  &trans                  &trans      &trans                  &trans  &trans
