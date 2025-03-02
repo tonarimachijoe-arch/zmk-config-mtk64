@@ -1,4 +1,3 @@
-
 #define JP_ZKHK  GRAVE        // Zenkaku ↔ Hankaku ↔ Kanji (半角 ↔ 全角 ↔ 漢字)
 #define JP_MINUS MINUS        // -
 #define JP_CARET EQUAL        // ^
@@ -38,3 +37,8 @@
 #define JP_RT    LS(JP_DOT)   // >
 #define JP_QMARK LS(JP_SLASH) // ?
 #define JP_UNDER LS(JP_BSLH)  // _
+
+#define PMW3610_CPI_INC_100 0xF0
+#define PMW3610_CPI_INC_300 0xF1
+#define PMW3610_CPI_DEC_100 0xF2
+#define PMW3610_CPI_DEC_300 0xF3
