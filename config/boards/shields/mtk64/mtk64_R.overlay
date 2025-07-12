@@ -78,6 +78,13 @@
     };
 };
 
+#include <input/processors.dtsi>
+
+&zip_temp_layer {
+    require-prior-idle-ms = <200>;
+    excluded-positions = <43 44 45 46 47>;
+};
+
 / {
     trackball_listener {
         compatible = "zmk,input-listener";
@@ -86,6 +93,7 @@
         /* auto mouse leyer settings see...
         https://zenn.dev/kot149/articles/zmk-auto-mouse-layer
         */
+        input-processors = <&zip_temp_layer 6 5000>;
 
         /* scroll layer settings see...
         https://qiita.com/BParound30/items/e5d6a0797ef892684880
