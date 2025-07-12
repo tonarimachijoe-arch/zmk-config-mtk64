@@ -18,14 +18,6 @@
 };
 */
 
-/ {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-
-    };
-};
-
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -47,6 +39,8 @@
 
 &xiao_serial { status = "disabled"; };
 
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
 &spi0 {
     status = "okay";
     compatible = "nordic,nrf-spim";
@@ -61,10 +55,40 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        cpi = <1000>;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+
+        force-awake;
+        /* keep the sensor awake while ZMK activity state is ACTIVE,
+           fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode.
+           thus, the sensor would be a `wakeup-source` */
+
+        force-awake-4ms-mode;
+        /* while force-awake is acitvated, enable this mode to force sampling per 
+           4ms, where the default sampling rate is 8ms. */
+        /* NOTE: apply this mode if you need 250Hz with direct USB connection. */
+
+        /*
         automouse-layer = <6>;
         scroll-layers = <3>;
         snipe-layers = <1>;
+        */
     };
 };
 
+/ {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
 
+        /* auto mouse leyer settings see...
+        https://zenn.dev/kot149/articles/zmk-auto-mouse-layer
+        */
+
+        /* scroll layer settings see...
+        https://qiita.com/BParound30/items/e5d6a0797ef892684880
+         */
+    };
+};
