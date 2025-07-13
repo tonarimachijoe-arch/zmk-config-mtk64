@@ -31,19 +31,4 @@
     status = "okay";
 };
 
-
-
 &xiao_serial { status = "disabled"; };
-
-
-
-#include <input/processors.dtsi>
-
-&zip_temp_layer {
-    compatible = "zmk,input-processor-temp-layer";
-    #input-processor-cells = <2>;
-    require-prior-idle-ms = <500>;
-    excluded-positions = <43 44 45 46 47>; // ],N,M,<,> 
-};
-
-
