@@ -1,4 +1,5 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <input/processors.dtsi>
 
 &pinctrl {
     spi0_default: spi0_default {
@@ -64,21 +65,29 @@
     };
 
     trackball_listener: trackball_listener {
-    compatible = "zmk,input-listener";
-    status = "disabled";
-    device = <&trackball_split>;
-    input-processors = <&zip_xy_scaler 1 4>, <&zip_temp_layer 6 5000>;
+        compatible = "zmk,input-listener";
+        status = "disabled";
+        device = <&trackball_split>;
+        input-processors = <&zip_temp_layer 6 5000>;
 
-    snipe {
-      layers = <1>;
-      input-processors = <&zip_xy_scaler 4 4>;
-      process-next;
+        snipe {
+        layers = <1>;
+        input-processors = <&zip_xy_scaler 4 4>;
+        process-next;
+        };
+
+        scroll {
+        layers = <3>;
+        input-processors = <&zip_xy_scaler 4 4>, <&zip_xy_to_scroll_mapper>;
+        process-next;
+        };
     };
 
-    scroll {
-      layers = <3>;
-      input-processors = <&zip_xy_scaler 4 4>, <&zip_xy_to_scroll_mapper>;
-      process-next;
+    zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <500>;
+        excluded-positions = <43 44 45 46 47>; // ],N,M,<,> 
     };
-  };
+
 };
