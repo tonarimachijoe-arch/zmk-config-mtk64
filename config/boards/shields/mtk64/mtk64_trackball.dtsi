@@ -68,19 +68,21 @@
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&trackball_split>;
-        input-processors = <&zip_temp_layer 6 5000>;
 
         snipe {
         layers = <1>;
-        input-processors = <&zip_xy_scaler 4 4>;
+        input-processors = <&zip_xy_scaler 1 4>;
         process-next;
         };
 
         scroll {
         layers = <3>;
-        input-processors = <&zip_xy_scaler 4 4>, <&zip_xy_to_scroll_mapper>;
+        input-processors = <&zip_scroll_scaler 1 2>, <&zip_xy_to_scroll_mapper>;
         process-next;
         };
+
+        input-processors = <&zip_temp_layer 6 5000>;
+
     };
 
     zip_temp_layer: zip_temp_layer {
