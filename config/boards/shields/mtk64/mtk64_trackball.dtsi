@@ -69,9 +69,15 @@
     device = <&trackball_split>;
     input-processors = <&zip_xy_scaler 1 4>, <&zip_temp_layer 6 5000>;
 
+    snipe {
+      layers = <1>;
+      input-processors = <&zip_xy_scaler 4 4>;
+      process-next;
+    };
+
     scroll {
       layers = <3>;
-      input-processors = <&zip_xy_scaler 1 12>;
+      input-processors = <&zip_xy_scaler 4 4>, <&zip_xy_to_scroll_mapper>;;
       process-next;
     };
   };
